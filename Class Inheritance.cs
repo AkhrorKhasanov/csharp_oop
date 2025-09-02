@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 class User
 {
     private string name;
@@ -47,6 +48,44 @@ class Student : User
     }
 }
 
+class Programmer : Employee
+{
+    private List<string> langs = new List<string>();
+    public void getLangs()
+    {
+        foreach (string lang in this.langs)
+        {
+            Console.WriteLine(lang);
+        }
+    }
+    public void setLang(string lang)
+    {
+        this.langs.Add(lang);
+    }
+}
+
+class Driver : Employee
+{
+    private int experience;
+    private string category;
+    public int getExperience()
+    {
+        return this.experience;
+    }
+    public void setExperience(int experience)
+    {
+        this.experience = experience;
+    }
+    public string getCategory()
+    {
+        return this.category;
+    }
+    public void setCategory(string category)
+    {
+        this.category = category;
+    }
+}
+
 class Program
 {
     static void Main()
@@ -70,5 +109,19 @@ class Program
         Console.WriteLine(student.getCourse());
         Console.WriteLine(student.getName());
         Console.WriteLine(student.getAge());
+
+        Programmer programmer = new Programmer();
+        programmer.setLang("Uzbek");
+        programmer.setLang("English");
+        programmer.setLang("Russian");
+
+        programmer.getLangs();
+
+        Driver driver = new Driver();
+        driver.setExperience(5);
+        driver.setCategory("A");
+
+        Console.WriteLine(driver.getExperience());
+        Console.WriteLine(driver.getCategory());
     }
 }
